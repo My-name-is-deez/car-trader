@@ -14,7 +14,6 @@ export const useCarStore = defineStore('car', {
         console.error('Error fetching cars:', error)
       } else {
         this.cars = data || []
-        console.log('Fetched cars:', this.cars)
       }
     },
   },

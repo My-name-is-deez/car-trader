@@ -2,6 +2,7 @@
   <div class="relative h-screen w-full overflow-hidden">
     <!-- Background video -->
     <video
+      controls preload="auto"
       autoplay
       loop
       muted
@@ -17,7 +18,8 @@
     <div class="z-20 absolute w-full h-full flex justify-center items-center">
       <div class="text-center w-1/2">
         <h1 class="text-7xl text-white font-serif mb-10">Find your drive</h1>
-        <CarSearchBar />
+        <!-- search bar -->
+        <CarSearchBar /> 
       </div>
     </div>
   </div>
