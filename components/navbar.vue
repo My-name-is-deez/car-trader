@@ -15,6 +15,7 @@
         <template v-if="user">
           <NuxtLink to="/profile/listing" class="hover:underline">Profile</NuxtLink>
           <NuxtLink to="/car/cCars" class="hover:underline">SeeCars</NuxtLink>
+          <NuxtLink to="/car/favorite" class="hover:underline">favorites</NuxtLink>
           <p @click="logout" class="cursor-pointer underline">Logout</p>
         </template>
         <NuxtLink v-else to="/login" class="hover:underline">Login</NuxtLink>

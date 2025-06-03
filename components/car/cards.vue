@@ -1,37 +1,26 @@
 <template>
-  <div>
-    <div class="w-full">
-        <ClientOnly>
-        <CarCard
-         @favor="handleFavorite(car.id)"
-         v-for="car in cars" :key="car.id" 
-         :car="car" 
-         :favored="car.id in favorite"
-         />
-        </ClientOnly>
-
-    </div>
+  <div class="w-full">
+    <ClientOnly>
+      <CarCard
+        v-for="car in props.cars"
+        :key="car.id"
+        :car="car"
+        :favored="carStore.favorite[car.id]"     
+        @favor="handleFavorite"                  
+      />
+    </ClientOnly>
   </div>
 </template>
 
-<script setup >
-const props= defineProps({
-    cars:Array,
-})
+<script setup>
+import { useCarStore } from '~/stores/car'
 
-const favorite= useLocalStorage('favorite', {})
+const props = defineProps({ cars: Array })
 
-function handleFavorite(id){
-    if(id in favorite.value){
-        delete favorite.value[id]
-    }else{
-        favorite.value={
-        ...favorite.value,
-        [id] : true
-    }}
+const carStore = useCarStore()
+carStore.loadFavorites()
+
+function handleFavorite(id) {
+  carStore.toggleFavorite(id)
 }
 </script>
-
-<style scoped>
-
-</style>
